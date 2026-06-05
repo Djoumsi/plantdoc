@@ -7,13 +7,47 @@
   <form method="post" action="<?= url('/diagnostic') ?>" enctype="multipart/form-data" id="diag-form">
     <?= Csrf::field() ?>
 
-    <label for="photo" class="upload-zone" id="dropzone">
+    <div class="upload-zone" id="dropzone">
       <i class="fa-solid fa-cloud-arrow-up"></i>
-      <h3>Choisir une photo</h3>
+      <h3>Ajoutez une photo de la plante</h3>
       <p>JPG, PNG ou WebP · 5 Mo max</p>
       <img id="preview" class="preview-img" style="display:none">
-      <input type="file" name="photo" id="photo" accept="image/jpeg,image/png,image/webp" required>
-    </label>
+
+      <div class="photo-actions">
+        <label class="photo-btn photo-btn-camera">
+          <i class="fa-solid fa-camera"></i>
+          <span>Prendre une photo</span>
+          <input type="file" name="photo" id="photoCamera"
+                 accept="image/jpeg,image/png,image/webp"
+                 capture="environment"
+                 class="photo-input">
+        </label>
+
+        <label class="photo-btn photo-btn-gallery">
+          <i class="fa-solid fa-images"></i>
+          <span>Choisir depuis la galerie</span>
+          <input type="file" name="photo" id="photoGallery"
+                 accept="image/jpeg,image/png,image/webp"
+                 class="photo-input">
+        </label>
+      </div>
+    </div>
+
+    <style>
+      .photo-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;justify-content:center}
+      .photo-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:12px;
+        font-size:14px;font-weight:600;cursor:pointer;transition:.2s;border:2px solid transparent;
+        text-align:center;min-width:200px;justify-content:center}
+      .photo-btn-camera{background:linear-gradient(135deg,var(--leaf,#52b788),var(--leaf-dark,#2d6a4f));color:#fff}
+      .photo-btn-camera:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(45,106,79,.3)}
+      .photo-btn-gallery{background:#fff;color:var(--leaf-dark,#1b4332);border-color:var(--leaf,#52b788)}
+      .photo-btn-gallery:hover{background:var(--leaf-pale,#e8f5e9);transform:translateY(-2px)}
+      .photo-btn i{font-size:18px}
+      .photo-input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+      @media(max-width:480px){
+        .photo-btn{width:100%;min-width:0}
+      }
+    </style>
 
     <div class="alert alert-info" style="margin-top:18px">
       <i class="fa-solid fa-lightbulb" style="color:var(--gold)"></i>
@@ -35,20 +69,36 @@
 </div>
 
 <script>
-const photo = document.getElementById('photo');
+const photoCamera = document.getElementById('photoCamera');
+const photoGallery = document.getElementById('photoGallery');
 const preview = document.getElementById('preview');
 const dropzone = document.getElementById('dropzone');
 const form = document.getElementById('diag-form');
 const offlineNote = document.getElementById('offlineNote');
 
-photo.addEventListener('change', e => {
-  const file = e.target.files[0];
+// Quand l'utilisateur choisit une photo (caméra OU galerie), on synchronise
+// les deux inputs pour qu'un seul fichier soit soumis au serveur.
+function handlePhotoChange(source) {
+  const file = source.files[0];
   if (!file) return;
+
+  // Vider l'autre input pour qu'un seul fichier soit envoyé au serveur
+  const other = (source === photoCamera) ? photoGallery : photoCamera;
+  try { other.value = ''; } catch (e) {}
+
   preview.src = URL.createObjectURL(file);
   preview.style.display = 'block';
   dropzone.classList.add('has-image');
-  dropzone.querySelectorAll('i,h3,p').forEach(el => el.style.display = 'none');
-});
+  dropzone.querySelectorAll(':scope > i, :scope > h3, :scope > p').forEach(el => el.style.display = 'none');
+}
+
+photoCamera.addEventListener('change', () => handlePhotoChange(photoCamera));
+photoGallery.addEventListener('change', () => handlePhotoChange(photoGallery));
+
+// Helper pour obtenir le fichier actuellement sélectionné
+function currentPhoto() {
+  return (photoCamera.files[0]) || (photoGallery.files[0]) || null;
+}
 
 // Indicateur hors-ligne
 function refreshOnline() {
@@ -60,9 +110,9 @@ refreshOnline();
 
 // Interception : si hors-ligne, on met la photo en file d'attente locale
 form.addEventListener('submit', async function (e) {
-  if (navigator.onLine) return; // comportement normal : envoi serveur
+  if (navigator.onLine) return;
   e.preventDefault();
-  const file = photo.files[0];
+  const file = currentPhoto();
   if (!file) return;
   const csrf = form.querySelector('input[name="_csrf"]').value;
   try {
@@ -70,7 +120,7 @@ form.addEventListener('submit', async function (e) {
     form.reset();
     preview.style.display = 'none';
     dropzone.classList.remove('has-image');
-    dropzone.querySelectorAll('i,h3,p').forEach(el => el.style.display = '');
+    dropzone.querySelectorAll(':scope > i, :scope > h3, :scope > p').forEach(el => el.style.display = '');
     alert('Vous êtes hors-ligne. Votre diagnostic a été enregistré et sera envoyé automatiquement dès le retour de la connexion.');
   } catch (err) {
     alert('Impossible d\'enregistrer le diagnostic hors-ligne.');
