@@ -118,6 +118,87 @@ class AdminController extends Controller
         $this->redirect("/admin/diagnostics");
     }
 
+    /**
+     * Change le rôle d'un utilisateur (admin uniquement).
+     * Empêche l'admin de se rétrograder lui-même pour éviter de perdre l'accès.
+     */
+    public function changeUserRole($id): void
+    {
+        $this->requireRole('admin');
+        $this->validateCsrf();
+
+        $id     = (int) $id;
+        $roleId = (int) $this->input('role_id');
+
+        if ($id === (int) $_SESSION['user_id']) {
+            set_flash('error', 'Vous ne pouvez pas modifier votre propre rôle.');
+            $this->redirect('/admin/users');
+        }
+        if (!in_array($roleId, [1, 2, 3], true)) {
+            set_flash('error', 'Rôle invalide.');
+            $this->redirect('/admin/users');
+        }
+
+        $ok = (new User())->changeRole($id, $roleId);
+        if ($ok) {
+            Logger::info('Rôle utilisateur modifié', ['id' => $id, 'role_id' => $roleId, 'by' => $_SESSION['user_id']]);
+            set_flash('success', 'Rôle mis à jour avec succès.');
+        } else {
+            set_flash('error', 'Échec de la mise à jour.');
+        }
+        $this->redirect('/admin/users');
+    }
+
+    /**
+     * Suspend ou réactive un compte utilisateur.
+     */
+    public function toggleUserStatus($id): void
+    {
+        $this->requireRole('admin');
+        $this->validateCsrf();
+
+        $id     = (int) $id;
+        $statut = (string) $this->input('statut');
+
+        if ($id === (int) $_SESSION['user_id']) {
+            set_flash('error', 'Vous ne pouvez pas modifier votre propre statut.');
+            $this->redirect('/admin/users');
+        }
+        if (!in_array($statut, ['actif', 'suspendu'], true)) {
+            set_flash('error', 'Statut invalide.');
+            $this->redirect('/admin/users');
+        }
+
+        $ok = (new User())->setStatus($id, $statut);
+        if ($ok) {
+            Logger::info('Statut utilisateur modifié', ['id' => $id, 'statut' => $statut, 'by' => $_SESSION['user_id']]);
+            set_flash('success', $statut === 'actif' ? 'Compte réactivé.' : 'Compte suspendu.');
+        }
+        $this->redirect('/admin/users');
+    }
+
+    /**
+     * Suppression logique d'un utilisateur (statut = supprime).
+     */
+    public function deleteUser($id): void
+    {
+        $this->requireRole('admin');
+        $this->validateCsrf();
+
+        $id = (int) $id;
+        if ($id === (int) $_SESSION['user_id']) {
+            set_flash('error', 'Vous ne pouvez pas supprimer votre propre compte.');
+            $this->redirect('/admin/users');
+        }
+
+        $ok = (new User())->setStatus($id, 'supprime');
+        if ($ok) {
+            Logger::info('Utilisateur supprimé', ['id' => $id, 'by' => $_SESSION['user_id']]);
+            set_flash('success', 'Compte supprimé.');
+        }
+        $this->redirect('/admin/users');
+    }
+
     public function maladies(): void
     {
         $this->requireRole('admin', 'expert');

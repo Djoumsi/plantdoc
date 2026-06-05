@@ -97,6 +97,9 @@ $router->get('/maladies/{id}', 'MaladieController@show');
 // Admin
 $router->get('/admin',                    'AdminController@dashboard');
 $router->get('/admin/users',              'AdminController@users');
+$router->post('/admin/users/{id}/role',   'AdminController@changeUserRole');
+$router->post('/admin/users/{id}/status', 'AdminController@toggleUserStatus');
+$router->post('/admin/users/{id}/delete', 'AdminController@deleteUser');
 $router->get('/admin/diagnostics',        'AdminController@diagnostics');
 $router->get('/admin/export/csv',         'AdminController@exportCsv');
 $router->post('/admin/diagnostic/{id}/validate', 'AdminController@validate');

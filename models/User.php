@@ -43,15 +43,31 @@ class User extends Model
     {
         $stmt = $this->db->prepare("
             SELECT u.id, u.nom, u.prenom, u.email, u.telephone, u.statut, u.created_at,
-                   r.libelle AS role, reg.nom AS region,
+                   u.role_id, r.libelle AS role, r.nom AS role_nom,
+                   reg.nom AS region,
                    (SELECT COUNT(*) FROM diagnostics d WHERE d.user_id = u.id) AS nb_diag
             FROM users u
             JOIN roles r ON u.role_id = r.id
             LEFT JOIN regions reg ON u.region_id = reg.id
+            WHERE u.statut <> 'supprime'
             ORDER BY u.created_at DESC LIMIT $limit
         ");
         $stmt->execute();
         return $stmt->fetchAll();
+    }
+
+    public function changeRole(int $id, int $roleId): bool
+    {
+        if (!in_array($roleId, [1, 2, 3], true)) return false;
+        return $this->db->prepare("UPDATE users SET role_id = ? WHERE id = ?")
+                        ->execute([$roleId, $id]);
+    }
+
+    public function setStatus(int $id, string $statut): bool
+    {
+        if (!in_array($statut, ['actif', 'suspendu', 'supprime'], true)) return false;
+        return $this->db->prepare("UPDATE users SET statut = ? WHERE id = ?")
+                        ->execute([$statut, $id]);
     }
 
     public function countByRole(): array
