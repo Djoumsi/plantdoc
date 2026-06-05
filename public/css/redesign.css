@@ -1,0 +1,359 @@
+/* =====================================================
+   PlantDoc — Redesign Public + Auth + Dashboard
+   Photos via Unsplash (free, real African agriculture)
+   ===================================================== */
+
+/* === LANDING HERO IMMERSIF === */
+.landing-hero{
+  min-height:90vh;
+  background:
+    linear-gradient(120deg, rgba(27,67,50,.92) 0%, rgba(45,106,79,.7) 50%, rgba(27,67,50,.4) 100%),
+    url('../images/farmer-hero.jpg') center/cover no-repeat;
+  color:#fff;display:flex;align-items:center;padding:60px 0;position:relative;
+}
+.landing-hero::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 20% 80%, rgba(244,162,97,.25), transparent 40%);
+}
+.landing-hero .container{position:relative;z-index:1;display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center}
+.landing-hero h1{font-size:62px;font-weight:800;line-height:1.05;margin-bottom:24px;letter-spacing:-1px;color:#fff}
+.landing-hero h1 .accent{color:var(--gold);position:relative;display:inline-block}
+.landing-hero h1 .accent::after{
+  content:"";position:absolute;bottom:4px;left:0;right:0;height:14px;
+  background:rgba(244,162,97,.25);z-index:-1;
+}
+.landing-hero p.lead{font-size:20px;opacity:.95;margin-bottom:36px;max-width:540px;line-height:1.6;font-weight:300}
+.landing-hero .badge-top{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.15);backdrop-filter:blur(10px);
+  padding:8px 18px;border-radius:30px;font-size:13px;font-weight:600;
+  margin-bottom:24px;border:1px solid rgba(255,255,255,.2);
+}
+.landing-hero .badge-top i{color:var(--gold)}
+.landing-hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px}
+.landing-hero .btn-mega{
+  background:var(--gold);color:#1a1a1a;padding:18px 32px;border-radius:14px;
+  font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:12px;
+  box-shadow:0 10px 30px rgba(244,162,97,.4);transition:.3s;text-decoration:none;
+}
+.landing-hero .btn-mega:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(244,162,97,.5);color:#1a1a1a}
+.landing-hero .btn-ghost{
+  background:transparent;color:#fff;border:2px solid rgba(255,255,255,.3);
+  padding:16px 28px;border-radius:14px;font-weight:600;
+  display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+}
+.landing-hero .btn-ghost:hover{background:rgba(255,255,255,.1);color:#fff;border-color:#fff}
+
+.landing-hero .trust-row{display:flex;gap:28px;flex-wrap:wrap;margin-top:30px;padding-top:30px;border-top:1px solid rgba(255,255,255,.15)}
+.landing-hero .trust-item{display:flex;flex-direction:column}
+.landing-hero .trust-item .num{font-size:28px;font-weight:800;color:var(--gold)}
+.landing-hero .trust-item .lbl{font-size:12px;opacity:.85;text-transform:uppercase;letter-spacing:1px}
+
+.landing-hero .visual-side{position:relative;min-height:480px;display:flex;align-items:center;justify-content:center}
+.landing-hero .floating-card{
+  background:rgba(255,255,255,.98);color:var(--text);
+  border-radius:24px;padding:24px;box-shadow:0 30px 80px rgba(0,0,0,.4);
+  backdrop-filter:blur(10px);transform:rotate(-2deg);
+  width:100%;max-width:460px;
+}
+.landing-hero .floating-card .fc-img{
+  width:100%;height:280px;border-radius:16px;
+  background:url('../images/cocoa.jpg') center/cover;
+  margin-bottom:16px;
+}
+.landing-hero .floating-card .fc-tag{
+  background:var(--danger-light);color:#991b1b;font-size:11px;
+  padding:4px 10px;border-radius:10px;font-weight:700;display:inline-block;
+}
+.landing-hero .floating-card h4{font-size:17px;color:var(--leaf-dark);margin-top:8px;font-weight:700}
+.landing-hero .floating-card .meter{height:6px;background:#e5e7eb;border-radius:3px;margin-top:12px;overflow:hidden}
+.landing-hero .floating-card .meter-fill{height:100%;background:linear-gradient(90deg,var(--leaf-light),var(--success));width:87%}
+.landing-hero .floating-card .fc-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:8px}
+
+.landing-hero .stat-bubble{
+  position:absolute;background:#fff;border-radius:16px;padding:14px 18px;
+  box-shadow:0 20px 40px rgba(0,0,0,.2);display:flex;align-items:center;gap:12px;
+  color:var(--text);
+}
+.landing-hero .stat-bubble .ic{
+  width:42px;height:42px;border-radius:50%;background:var(--gold-light);color:var(--gold);
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+}
+.landing-hero .stat-bubble .b1{font-weight:800;color:var(--leaf-dark);font-size:18px}
+.landing-hero .stat-bubble .b2{font-size:11px;color:var(--muted)}
+.landing-hero .bubble-1{top:-20px;right:-20px;z-index:3;animation:float 3s ease-in-out infinite}
+.landing-hero .bubble-2{bottom:-20px;left:-30px;z-index:3;animation:float 3s ease-in-out infinite .8s}
+
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+/* === HOW IT WORKS === */
+.how-section{padding:100px 0;background:#fff;position:relative}
+.how-section .container{max-width:1100px}
+.how-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;color:var(--leaf);font-weight:700;
+  font-size:13px;text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;
+}
+.how-eyebrow::before{content:"";width:30px;height:2px;background:var(--gold)}
+.how-section h2{font-size:42px;color:var(--leaf-dark);font-weight:800;margin-bottom:14px;letter-spacing:-1px}
+.how-section .sub{color:var(--muted);font-size:17px;max-width:600px;margin-bottom:60px}
+
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;position:relative}
+.steps-grid::before{
+  content:"";position:absolute;top:60px;left:15%;right:15%;height:2px;
+  background:linear-gradient(90deg,var(--leaf-light),var(--gold),var(--leaf-light));
+  z-index:0;
+}
+.step{position:relative;z-index:1;text-align:center}
+.step .num-circle{
+  width:120px;height:120px;border-radius:50%;background:#fff;border:3px solid var(--leaf-light);
+  margin:0 auto 24px;display:flex;align-items:center;justify-content:center;
+  font-size:42px;color:var(--leaf);box-shadow:0 10px 30px rgba(82,183,136,.2);
+  position:relative;
+}
+.step .num-badge{
+  position:absolute;top:-8px;right:-8px;width:36px;height:36px;border-radius:50%;
+  background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:16px;box-shadow:0 4px 12px rgba(244,162,97,.4);
+}
+.step h3{font-size:22px;color:var(--leaf-dark);margin-bottom:10px;font-weight:700}
+.step p{color:var(--muted);font-size:14px;line-height:1.7;max-width:280px;margin:0 auto}
+
+/* === SHOWCASE BAND === */
+.showcase{padding:100px 0;background:linear-gradient(135deg,#f5f7f5 0%,#e8efe6 100%)}
+.showcase-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.showcase .text h2{font-size:40px;color:var(--leaf-dark);margin-bottom:20px;line-height:1.15;font-weight:800}
+.showcase .text p{color:#374151;font-size:16px;line-height:1.8;margin-bottom:24px}
+.showcase .checklist{list-style:none;margin:0;padding:0}
+.showcase .checklist li{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px;font-size:15px}
+.showcase .checklist i{
+  width:32px;height:32px;border-radius:50%;background:var(--success-light);color:var(--success);
+  display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;
+}
+.showcase .visual{
+  border-radius:24px;overflow:hidden;box-shadow:0 30px 60px rgba(27,67,50,.25);
+  width:100%;height:420px;
+  background:url('../images/tomato.jpg') center/cover;
+  position:relative;
+}
+.showcase .visual::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg, transparent 60%, rgba(27,67,50,.85));
+}
+.showcase .visual-caption{position:absolute;bottom:30px;left:30px;right:30px;color:#fff;z-index:1}
+.showcase .visual-caption h4{font-size:20px;font-weight:700;margin-bottom:6px;color:#fff}
+.showcase .visual-caption p{font-size:13px;opacity:.9;color:#fff;margin:0}
+
+/* === TESTIMONIAL === */
+.testimonials{padding:90px 0;background:var(--leaf-dark);color:#fff}
+.testimonials .container{text-align:center}
+.testimonials h2{font-size:34px;font-weight:800;margin-bottom:50px;color:#fff}
+.testimonials .quote{
+  background:rgba(255,255,255,.08);backdrop-filter:blur(10px);
+  border-radius:20px;padding:40px;max-width:700px;margin:0 auto;
+  border:1px solid rgba(255,255,255,.1);position:relative;
+}
+.testimonials .quote::before{
+  content:"\f10d";font-family:"Font Awesome 6 Free";font-weight:900;
+  position:absolute;top:-30px;left:30px;font-size:60px;color:var(--gold);opacity:.6;
+}
+.testimonials .quote p{font-size:18px;line-height:1.7;margin-bottom:24px;font-style:italic;font-weight:300;color:#fff}
+.testimonials .quote .person{display:flex;align-items:center;gap:14px;justify-content:center}
+.testimonials .quote .person .avatar{
+  width:54px;height:54px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),var(--earth));
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;color:#fff;
+}
+.testimonials .quote .person .info{text-align:left}
+.testimonials .quote .person strong{display:block;color:#fff}
+.testimonials .quote .person small{color:var(--gold);font-size:12px}
+
+/* === CTA FINAL === */
+.cta-final{
+  padding:80px 0;background:linear-gradient(135deg,var(--gold) 0%, #e8945a 100%);
+  text-align:center;color:#fff;position:relative;overflow:hidden;
+}
+.cta-final::after{
+  content:"\f06c";font-family:"Font Awesome 6 Free";font-weight:900;
+  position:absolute;right:-50px;top:-50px;font-size:300px;opacity:.1;
+}
+.cta-final h2{font-size:42px;font-weight:800;margin-bottom:14px;letter-spacing:-1px;color:#fff}
+.cta-final p{font-size:18px;margin-bottom:30px;opacity:.95}
+.cta-final .btn{background:#fff;color:var(--leaf-dark);font-weight:700;font-size:16px;padding:18px 36px;border-radius:12px;text-decoration:none;display:inline-flex;align-items:center;gap:10px}
+
+/* =====================================================
+   AUTH PAGE — Split screen avec image agriculteur
+   ===================================================== */
+.auth-split{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;background:#fff}
+.auth-split .visual{
+  position:relative;overflow:hidden;
+  background:
+    linear-gradient(135deg, rgba(27,67,50,.65), rgba(45,106,79,.35)),
+    url('../images/farmer-field.jpg') center/cover;
+  display:flex;flex-direction:column;justify-content:space-between;padding:50px;color:#fff;
+}
+.auth-split .visual.register-img{
+  background:
+    linear-gradient(135deg, rgba(27,67,50,.65), rgba(45,106,79,.35)),
+    url('../images/cocoa.jpg') center/cover;
+}
+.auth-split .visual .brand-light{display:flex;align-items:center;gap:12px;font-size:24px;font-weight:800;color:#fff;text-decoration:none}
+.auth-split .visual .brand-light i{color:var(--gold);font-size:28px}
+.auth-split .visual .brand-light span{color:var(--gold)}
+.auth-split .visual .quote-block h2{font-size:38px;font-weight:800;line-height:1.2;margin-bottom:16px;text-shadow:0 2px 20px rgba(0,0,0,.3);color:#fff}
+.auth-split .visual .quote-block p{font-size:16px;opacity:.95;max-width:420px;line-height:1.6;color:#fff}
+.auth-split .visual .feature-list{display:flex;flex-direction:column;gap:14px;margin-top:24px}
+.auth-split .visual .feature-list .fl{display:flex;align-items:center;gap:14px;font-size:14px}
+.auth-split .visual .feature-list .fl i{
+  width:38px;height:38px;border-radius:50%;background:rgba(244,162,97,.3);color:var(--gold);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;
+}
+.auth-split .visual .stats-line{display:flex;gap:30px;padding-top:24px;border-top:1px solid rgba(255,255,255,.2)}
+.auth-split .visual .stats-line div{font-size:13px}
+.auth-split .visual .stats-line strong{display:block;font-size:24px;color:var(--gold);font-weight:800}
+
+.auth-split .form-side{display:flex;align-items:center;justify-content:center;padding:40px;background:#fafbfa;overflow-y:auto}
+.auth-split .form-card{width:100%;max-width:440px}
+.auth-split .form-card .top-link{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;font-size:13px;color:var(--muted)}
+.auth-split .form-card .top-link a{color:var(--leaf);font-weight:600;text-decoration:none}
+.auth-split .form-card .brand-mobile{display:none;margin-bottom:24px}
+.auth-split .form-card h1{font-size:32px;color:var(--leaf-dark);font-weight:800;margin-bottom:8px;letter-spacing:-.5px}
+.auth-split .form-card .subt{color:var(--muted);margin-bottom:30px;font-size:15px}
+
+.auth-split .form-control{
+  padding:14px 14px 14px 46px;border-radius:12px;font-size:14px;border:1.5px solid #e5e7eb;background:#fff;width:100%;
+}
+.auth-split .form-control:focus{border-color:var(--leaf);box-shadow:0 0 0 4px rgba(82,183,136,.12);outline:none}
+.auth-split .form-group label{font-size:12px;color:var(--leaf-dark);font-weight:600;text-transform:none;letter-spacing:0;margin-bottom:8px;display:block}
+.auth-split .input-wrap{position:relative}
+.auth-split .input-wrap i{font-size:16px;left:16px;position:absolute;top:50%;transform:translateY(-50%);color:var(--muted)}
+
+.auth-split .btn-primary{
+  background:linear-gradient(135deg,var(--leaf),var(--leaf-dark));color:#fff;
+  padding:15px;font-size:15px;font-weight:700;border-radius:12px;width:100%;
+  border:none;cursor:pointer;
+  box-shadow:0 8px 24px rgba(45,106,79,.3);transition:.3s;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+}
+.auth-split .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(45,106,79,.4)}
+
+.auth-split .divider{display:flex;align-items:center;gap:14px;color:var(--muted);font-size:12px;margin:24px 0}
+.auth-split .divider::before,.auth-split .divider::after{content:"";flex:1;height:1px;background:var(--border)}
+
+.auth-split .helper-tip{
+  background:var(--leaf-pale);border-radius:10px;padding:14px;
+  font-size:12px;color:var(--leaf-dark);margin-top:18px;display:flex;align-items:flex-start;gap:10px;
+}
+.auth-split .helper-tip i{color:var(--leaf);font-size:14px;margin-top:2px}
+
+/* =====================================================
+   USER DASHBOARD — Espace agriculteur chaleureux
+   ===================================================== */
+.welcome-hero{
+  background:
+    linear-gradient(120deg, rgba(27,67,50,.92) 0%, rgba(45,106,79,.7) 100%),
+    url('../images/farmer-field.jpg') center/cover;
+  color:#fff;border-radius:24px;padding:40px;margin-bottom:30px;position:relative;overflow:hidden;
+}
+.welcome-hero::after{
+  content:"\f06c";font-family:"Font Awesome 6 Free";font-weight:900;
+  position:absolute;right:-30px;bottom:-30px;font-size:240px;color:rgba(244,162,97,.15);
+}
+.welcome-hero .greet-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;position:relative;z-index:1}
+.welcome-hero .greet h1{font-size:38px;font-weight:800;margin-bottom:8px;letter-spacing:-.5px;color:#fff}
+.welcome-hero .greet h1 .wave{display:inline-block;animation:wave 2s ease-in-out infinite;transform-origin:70% 70%}
+@keyframes wave{0%,100%{transform:rotate(0)}25%{transform:rotate(20deg)}75%{transform:rotate(-10deg)}}
+.welcome-hero .greet p{font-size:16px;opacity:.95;max-width:500px;color:#fff}
+.welcome-hero .quick-action{
+  background:var(--gold);color:#1a1a1a;padding:16px 28px;border-radius:14px;
+  font-weight:700;display:inline-flex;align-items:center;gap:12px;
+  box-shadow:0 10px 30px rgba(244,162,97,.4);transition:.3s;text-decoration:none;font-size:15px;
+}
+.welcome-hero .quick-action:hover{transform:translateY(-3px);color:#1a1a1a;box-shadow:0 15px 40px rgba(244,162,97,.5)}
+.welcome-hero .quick-action i{font-size:18px}
+
+.welcome-hero .meta-row{
+  display:flex;gap:24px;margin-top:24px;flex-wrap:wrap;position:relative;z-index:1;
+  padding-top:24px;border-top:1px solid rgba(255,255,255,.15);
+}
+.welcome-hero .meta-row .mi{display:flex;align-items:center;gap:10px;font-size:13px;color:#fff}
+.welcome-hero .meta-row .mi i{color:var(--gold)}
+
+/* === Stats Pro === */
+.stats-row-pro{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-bottom:30px}
+.stat-pro{background:#fff;border-radius:18px;padding:24px;border:1px solid var(--border);transition:.3s;position:relative;overflow:hidden}
+.stat-pro:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.08)}
+.stat-pro::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--leaf)}
+.stat-pro.gold::before{background:var(--gold)}
+.stat-pro.danger::before{background:var(--danger)}
+.stat-pro.success::before{background:var(--success)}
+.stat-pro .ic{width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px}
+.stat-pro.leaf .ic{background:var(--leaf-pale);color:var(--leaf)}
+.stat-pro.gold .ic{background:var(--gold-light);color:var(--gold)}
+.stat-pro.danger .ic{background:var(--danger-light);color:var(--danger)}
+.stat-pro.success .ic{background:var(--success-light);color:var(--success)}
+.stat-pro .lbl{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:6px}
+.stat-pro .val{font-size:34px;font-weight:800;color:var(--leaf-dark);line-height:1}
+.stat-pro .delta{font-size:12px;color:var(--success);margin-top:8px;font-weight:600;display:flex;align-items:center;gap:4px}
+
+/* === Action cards Pro === */
+.action-row-pro{display:grid;grid-template-columns:2fr 1fr 1fr;gap:18px;margin-bottom:30px}
+.action-pro{border-radius:18px;padding:28px;text-decoration:none;color:inherit;transition:.3s;display:flex;flex-direction:column;justify-content:space-between;min-height:200px;position:relative;overflow:hidden}
+.action-pro:hover{transform:translateY(-4px);color:inherit}
+.action-pro.hero-card{background:linear-gradient(135deg,var(--leaf-light) 0%,var(--leaf-dark) 100%);color:#fff;box-shadow:0 15px 40px rgba(45,106,79,.25)}
+.action-pro.hero-card::after{content:"\f030";font-family:"Font Awesome 6 Free";font-weight:900;position:absolute;right:-20px;bottom:-30px;font-size:160px;opacity:.15}
+.action-pro.hero-card h3{font-size:24px;font-weight:800;margin-bottom:6px;color:#fff}
+.action-pro.hero-card p{opacity:.9;font-size:14px;margin-bottom:14px;max-width:280px;color:#fff}
+.action-pro.hero-card .btn-inline{background:var(--gold);color:#1a1a1a;padding:10px 18px;border-radius:10px;font-weight:700;font-size:13px;display:inline-flex;align-items:center;gap:8px;width:fit-content}
+.action-pro.alt{background:#fff;border:1px solid var(--border)}
+.action-pro.alt:hover{border-color:var(--leaf);box-shadow:0 10px 30px rgba(0,0,0,.06)}
+.action-pro.alt .ic{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+.action-pro.alt.info .ic{background:var(--info-light);color:var(--info)}
+.action-pro.alt.gold .ic{background:var(--gold-light);color:var(--gold)}
+.action-pro.alt h3{font-size:17px;color:var(--leaf-dark);margin-bottom:6px;font-weight:700}
+.action-pro.alt p{color:var(--muted);font-size:13px}
+
+/* === Tip card === */
+.tip-card{
+  background:linear-gradient(135deg, var(--gold-light), #fff);
+  border-left:4px solid var(--gold);border-radius:14px;padding:18px 22px;
+  margin-bottom:24px;display:flex;align-items:center;gap:16px;
+}
+.tip-card .ic{width:48px;height:48px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.tip-card .ct{flex:1}
+.tip-card h4{color:var(--earth);font-size:15px;font-weight:700;margin-bottom:4px}
+.tip-card p{color:#5a4530;font-size:13px;margin:0}
+
+/* === Activity feed dashboard === */
+.dash-grid{display:grid;grid-template-columns:2fr 1fr;gap:24px}
+.weather-card{
+  background:linear-gradient(135deg,#118ab2 0%,#06d6a0 100%);
+  color:#fff;border-radius:18px;padding:24px;margin-bottom:18px;
+}
+.weather-card .top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+.weather-card h4{font-size:14px;opacity:.9;font-weight:500;color:#fff}
+.weather-card .temp{font-size:38px;font-weight:800;color:#fff;line-height:1}
+.weather-card .loc{font-size:12px;opacity:.85;margin-top:4px;color:#fff}
+.weather-card .ic-w{font-size:42px;opacity:.9;color:#fff}
+.weather-card .alert-mini{
+  background:rgba(255,255,255,.15);border-radius:10px;padding:10px 14px;
+  font-size:12px;margin-top:14px;display:flex;align-items:center;gap:10px;color:#fff;
+}
+
+/* === Responsive === */
+@media(max-width:900px){
+  .landing-hero .container{grid-template-columns:1fr;text-align:center;padding:0 24px}
+  .landing-hero h1{font-size:42px}
+  .landing-hero .visual-side{display:none}
+  .steps-grid{grid-template-columns:1fr;gap:50px}
+  .steps-grid::before{display:none}
+  .showcase-grid{grid-template-columns:1fr;gap:40px}
+  .showcase .visual{aspect-ratio:16/10}
+  .auth-split{grid-template-columns:1fr}
+  .auth-split .visual{display:none}
+  .auth-split .form-card .brand-mobile{display:flex;justify-content:center}
+  .welcome-hero{padding:28px}
+  .welcome-hero .greet h1{font-size:28px}
+  .action-row-pro{grid-template-columns:1fr}
+  .dash-grid{grid-template-columns:1fr}
+  .how-section h2,.showcase .text h2,.cta-final h2{font-size:30px}
+}

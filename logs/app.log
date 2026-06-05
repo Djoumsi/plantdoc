@@ -1,0 +1,80 @@
+[2026-05-27 10:41:38] INFO: Nouveau compte {"user_id":2,"email":"test@plantdoc.cm"}
+[2026-05-27 10:42:02] INFO: Login OK {"user_id":2}
+[2026-05-27 10:42:11] INFO: Login OK {"user_id":1}
+[2026-05-27 10:47:41] INFO: Login OK {"user_id":2}
+[2026-05-27 10:58:22] INFO: Login OK {"user_id":2}
+[2026-05-27 10:59:41] INFO: Login OK {"user_id":2}
+[2026-05-27 11:02:09] INFO: Login OK {"user_id":2}
+[2026-05-27 14:55:10] INFO: Nouveau compte {"user_id":3,"email":"vinil@gmail.com"}
+[2026-05-27 14:55:34] INFO: Login OK {"user_id":3}
+[2026-05-29 12:43:49] INFO: Login OK {"user_id":2}
+[2026-05-29 12:43:50] ERROR: API Claude failed {"code":0,"err":"SSL certificate problem: unable to get local issuer certificate","body":""}
+[2026-05-29 12:43:50] WARN: API IA indisponible, fallback simulation {"err":"Erreur IA (code 0)"}
+[2026-05-29 12:43:51] INFO: Diagnostic créé {"id":1,"user":2,"maladie":"Pourriture brune du cacao"}
+[2026-05-29 13:11:22] INFO: Login OK {"user_id":2}
+[2026-05-29 13:13:08] INFO: Login OK {"user_id":2}
+[2026-05-29 13:14:02] ERROR: API Claude failed {"code":0,"err":"SSL certificate problem: unable to get local issuer certificate","body":""}
+[2026-05-29 13:14:02] WARN: API IA indisponible, fallback simulation {"err":"Erreur IA (code 0)"}
+[2026-05-29 13:14:02] INFO: Diagnostic créé {"id":2,"user":2,"maladie":"Mildiou de la tomate"}
+[2026-05-29 13:31:04] INFO: Login OK {"user_id":2}
+[2026-05-29 13:31:05] ERROR: API Claude failed {"code":0,"err":"SSL certificate problem: unable to get local issuer certificate","body":""}
+[2026-05-29 13:31:05] WARN: API IA indisponible, fallback simulation {"err":"Erreur IA (code 0)"}
+[2026-05-29 13:31:05] INFO: Diagnostic créé {"id":3,"user":2,"maladie":"Pourriture brune du cacao"}
+[2026-05-29 13:37:13] INFO: Login OK {"user_id":2}
+[2026-05-29 13:37:19] INFO: Diagnostic créé {"id":4,"user":2,"maladie":"Pourriture des cabosses (Frostkrankheit)"}
+[2026-05-29 13:38:32] INFO: Login OK {"user_id":2}
+[2026-05-29 13:46:57] INFO: Diagnostic créé {"id":5,"user":2,"maladie":"mildiou de la tomate"}
+[2026-05-29 13:47:08] INFO: Diagnostic créé {"id":6,"user":2,"maladie":"mildiou de la tomate"}
+[2026-05-29 13:47:22] INFO: Diagnostic créé {"id":7,"user":2,"maladie":"mildiou de la tomate"}
+[2026-05-29 13:47:37] INFO: Diagnostic créé {"id":8,"user":2,"maladie":"mildiou de la tomate"}
+[2026-05-29 21:49:45] INFO: Login OK {"user_id":2}
+[2026-05-29 21:50:08] INFO: Diagnostic créé {"id":9,"user":2,"maladie":"Mildiou de la tomate"}
+[2026-05-29 21:51:04] INFO: Diagnostic créé {"id":10,"user":2,"maladie":"sain"}
+[2026-05-30 12:30:11] INFO: Login OK {"user_id":2}
+[2026-05-30 12:30:13] INFO: Login OK {"user_id":1}
+[2026-05-30 12:31:14] INFO: Login OK {"user_id":2}
+[2026-05-30 12:31:14] ERROR: Unhandled exception {"msg":"Vue introuvable : errors\/403","file":"C:\\wamp64\\www\\plantdoc\\core\\Controller.php","line":12}
+[2026-05-30 12:31:15] WARN: Échec login {"email":"fake@x.com","ip":"::1"}
+[2026-05-30 12:31:15] WARN: Échec login {"email":"fake@x.com","ip":"::1"}
+[2026-05-30 12:31:15] WARN: Échec login {"email":"fake@x.com","ip":"::1"}
+[2026-05-30 12:31:15] WARN: Échec login {"email":"fake@x.com","ip":"::1"}
+[2026-05-30 12:31:15] WARN: Échec login {"email":"fake@x.com","ip":"::1"}
+[2026-05-30 13:09:19] INFO: Login OK {"user_id":2}
+[2026-06-01 16:57:08] INFO: Login OK {"user_id":2}
+[2026-06-01 17:01:38] WARN: Échec login {"email":"admin@plantdoc.cm","ip":"::1"}
+[2026-06-01 17:01:53] WARN: Échec login {"email":"test@plantdoc.cm","ip":"::1"}
+[2026-06-01 17:02:22] INFO: Login OK {"user_id":1}
+[2026-06-01 17:03:02] INFO: Login OK {"user_id":1}
+[2026-06-03 16:02:24] INFO: Login OK {"user_id":2}
+[2026-06-04 08:31:49] INFO: Login OK {"user_id":1}
+[2026-06-04 08:33:32] INFO: Login OK {"user_id":4}
+[2026-06-04 08:36:40] INFO: Nouveau compte {"user_id":6,"email":"motuoluciole77@gmail.com"}
+[2026-06-04 08:36:40] INFO: E-mail journalisé (driver log) {"to":"motuoluciole77@gmail.com","subject":"Bienvenue sur PlantDoc 🌱"}
+[2026-06-04 08:37:05] INFO: Login OK {"user_id":6}
+[2026-06-04 07:42:47] INFO: E-mail SMTP envoyé {"to":"vinilbrayan09@gmail.com","subject":"✅ Test SMTP — PlantDoc"}
+[2026-06-04 08:54:24] INFO: Login OK {"user_id":1}
+[2026-06-04 08:55:02] INFO: Login OK {"user_id":1}
+[2026-06-04 08:55:11] INFO: Diagnostic validé {"id":"10","expert":1,"statut":"valide"}
+[2026-06-04 08:55:18] INFO: E-mail SMTP envoyé {"to":"test@plantdoc.cm","subject":"Votre diagnostic a été confirmé — PlantDoc"}
+[2026-06-04 08:55:18] INFO: Diagnostic validé {"id":"10","expert":1,"statut":"valide"}
+[2026-06-04 08:55:22] INFO: E-mail SMTP envoyé {"to":"test@plantdoc.cm","subject":"Votre diagnostic a été confirmé — PlantDoc"}
+[2026-06-04 08:55:22] INFO: Diagnostic validé {"id":"10","expert":1,"statut":"valide"}
+[2026-06-04 08:55:25] INFO: E-mail SMTP envoyé {"to":"test@plantdoc.cm","subject":"Votre diagnostic a été confirmé — PlantDoc"}
+[2026-06-04 08:55:25] INFO: Diagnostic validé {"id":"10","expert":1,"statut":"valide"}
+[2026-06-04 08:55:29] INFO: E-mail SMTP envoyé {"to":"test@plantdoc.cm","subject":"Votre diagnostic a été confirmé — PlantDoc"}
+[2026-06-04 08:55:29] INFO: Diagnostic validé {"id":"10","expert":1,"statut":"valide"}
+[2026-06-04 08:55:33] INFO: E-mail SMTP envoyé {"to":"test@plantdoc.cm","subject":"Votre diagnostic a été confirmé — PlantDoc"}
+[2026-06-04 08:55:34] INFO: Diagnostic validé {"id":"10","expert":1,"statut":"valide"}
+[2026-06-04 08:55:37] INFO: E-mail SMTP envoyé {"to":"test@plantdoc.cm","subject":"Votre diagnostic a été confirmé — PlantDoc"}
+[2026-06-04 08:56:13] INFO: Login OK {"user_id":5}
+[2026-06-04 09:07:38] INFO: Login OK {"user_id":5}
+[2026-06-04 09:09:58] INFO: Login OK {"user_id":5}
+[2026-06-04 09:12:26] INFO: Login OK {"user_id":2}
+[2026-06-04 10:42:58] INFO: Login OK {"user_id":2}
+[2026-06-04 14:18:05] INFO: Login OK {"user_id":2}
+[2026-06-04 14:27:09] INFO: Login OK {"user_id":2}
+[2026-06-05 15:42:16] INFO: Login OK {"user_id":2}
+[2026-06-05 16:23:20] INFO: Login OK {"user_id":2}
+[2026-06-05 16:23:37] INFO: Login OK {"user_id":1}
+[2026-06-05 16:23:44] INFO: Export CSV diagnostics {"by":1,"count":10}
+[2026-06-05 18:38:39] INFO: Login OK {"user_id":2}

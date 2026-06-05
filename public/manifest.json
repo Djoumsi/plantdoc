@@ -1,0 +1,47 @@
+{
+  "name": "PlantDoc — Diagnostic agricole IA",
+  "short_name": "PlantDoc",
+  "description": "Identifiez les maladies de vos cultures par photo grâce à l'intelligence artificielle. Pour les agriculteurs du Cameroun.",
+  "start_url": "/plantdoc/dashboard",
+  "scope": "/plantdoc/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#2d6a4f",
+  "theme_color": "#2d6a4f",
+  "lang": "fr",
+  "dir": "ltr",
+  "categories": ["agriculture", "education", "productivity"],
+  "icons": [
+    {
+      "src": "/plantdoc/public/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/plantdoc/public/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Nouveau diagnostic",
+      "short_name": "Diagnostic",
+      "description": "Lancer une nouvelle analyse IA",
+      "url": "/plantdoc/diagnostic/new",
+      "icons": [{ "src": "/plantdoc/public/images/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Mon historique",
+      "short_name": "Historique",
+      "url": "/plantdoc/history"
+    },
+    {
+      "name": "Carte des maladies",
+      "short_name": "Carte",
+      "url": "/plantdoc/map"
+    }
+  ]
+}

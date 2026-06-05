@@ -1,0 +1,299 @@
+/* =====================================================
+   PlantDoc — Responsive Mobile & Tablette
+   Breakpoints :
+   - Mobile  : ≤ 600px
+   - Tablette: 601–900px
+   - Desktop : > 900px
+   ===================================================== */
+
+/* === BASE MOBILE-FIRST FIXES === */
+html { -webkit-text-size-adjust: 100%; }
+body { overflow-x: hidden; }
+img, video { max-width: 100%; height: auto; }
+.container { padding: 0 16px; max-width: 100%; }
+
+/* =====================================================
+   TABLETTE (601 – 900px)
+   ===================================================== */
+@media (max-width: 900px) {
+  /* === NAV PUBLIQUE === */
+  .public-nav { padding: 12px 0; }
+  .public-nav .nav-links { gap: 12px; }
+  .public-nav .nav-links a:not(.btn-primary) { display: none; }
+  .public-nav .nav-links .btn-primary { padding: 8px 14px; font-size: 13px; }
+  .brand { font-size: 18px; }
+  .brand i { font-size: 22px; }
+
+  /* === LANDING HERO === */
+  .landing-hero { min-height: auto; padding: 50px 0 70px; }
+  .landing-hero .container { grid-template-columns: 1fr; gap: 50px; text-align: center; }
+  .landing-hero .visual-side { display: flex; justify-content: center; padding-top: 30px; }
+  .landing-hero .floating-card { max-width: 320px; transform: rotate(-2deg); }
+  .landing-hero .stat-bubble { padding: 10px 14px; }
+  .landing-hero .bubble-1 { top: -10px; right: 0; }
+  .landing-hero .bubble-2 { bottom: -10px; left: 0; }
+  .landing-hero .cta-row { justify-content: center; }
+  .landing-hero .trust-row { justify-content: center; gap: 20px; }
+  .landing-hero h1 { font-size: 38px; }
+  .landing-hero p.lead { font-size: 17px; }
+
+  /* === Sections === */
+  .how-section, .showcase, .testimonials, .cta-final { padding: 60px 0; }
+  .showcase-grid { grid-template-columns: 1fr; gap: 40px; }
+  .showcase .visual { aspect-ratio: 4/3; }
+  .steps-grid { grid-template-columns: 1fr; gap: 50px; }
+  .steps-grid::before { display: none; }
+
+  /* === Auth split → stacked === */
+  .auth-split { grid-template-columns: 1fr; min-height: auto; }
+  .auth-split .visual { display: none; }
+  .auth-split .form-side { padding: 30px 20px; min-height: 100vh; }
+  .auth-split .form-card .brand-mobile { display: flex; justify-content: center; margin-bottom: 24px; }
+
+  /* === Dashboard === */
+  .dash-grid { grid-template-columns: 1fr; gap: 20px; }
+  .action-row-pro { grid-template-columns: 1fr; }
+
+  /* === Admin === */
+  .admin-shell { flex-direction: column; }
+  .admin-side {
+    width: 100%; height: auto; position: relative;
+    padding: 14px 0; display: flex; flex-direction: column;
+  }
+  .admin-side .brand { padding: 0 20px 14px; }
+  .admin-menu { display: flex; overflow-x: auto; padding: 0 14px; gap: 4px; }
+  .admin-menu::-webkit-scrollbar { display: none; }
+  .admin-menu a {
+    flex-shrink: 0; padding: 10px 14px; border-left: none;
+    border-bottom: 3px solid transparent; font-size: 12px; white-space: nowrap;
+  }
+  .admin-menu a.active { border-bottom-color: var(--gold); border-left: none; }
+  .admin-main { padding: 20px 16px; }
+  .admin-topbar { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .kpi-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* =====================================================
+   MOBILE (≤ 600px) — Smartphones
+   ===================================================== */
+@media (max-width: 600px) {
+
+  body { font-size: 14px; }
+
+  /* === LANDING HERO === */
+  .landing-hero { padding: 40px 0 50px; }
+  .landing-hero h1 { font-size: 30px; line-height: 1.15; }
+  .landing-hero p.lead { font-size: 15px; }
+  .landing-hero .badge-top { font-size: 11px; padding: 6px 14px; }
+  .landing-hero .cta-row { flex-direction: column; gap: 10px; }
+  .landing-hero .btn-mega, .landing-hero .btn-ghost {
+    width: 100%; justify-content: center; padding: 14px 20px; font-size: 14px;
+  }
+  .landing-hero .trust-row {
+    grid-template-columns: repeat(2, 1fr); display: grid; gap: 16px;
+    padding-top: 24px; margin-top: 24px;
+  }
+  .landing-hero .trust-item .num { font-size: 22px; }
+  .landing-hero .trust-item .lbl { font-size: 10px; }
+  .landing-hero .floating-card { max-width: 280px; padding: 18px; }
+  .landing-hero .floating-card .fc-img { height: 150px; }
+  .landing-hero .floating-card h4 { font-size: 15px; }
+  .landing-hero .stat-bubble { padding: 8px 12px; }
+  .landing-hero .stat-bubble .ic { width: 34px; height: 34px; font-size: 14px; }
+  .landing-hero .stat-bubble .b1 { font-size: 15px; }
+  .landing-hero .stat-bubble .b2 { font-size: 10px; }
+
+  /* === Sections === */
+  .how-section, .showcase, .testimonials, .cta-final { padding: 50px 0; }
+  .how-section h2, .showcase .text h2 { font-size: 26px; }
+  .how-section .sub, .showcase .text p { font-size: 14px; }
+  .step .num-circle { width: 90px; height: 90px; font-size: 32px; }
+  .step .num-badge { width: 28px; height: 28px; font-size: 13px; }
+  .step h3 { font-size: 18px; }
+  .step p { font-size: 13px; }
+  .testimonials h2 { font-size: 24px; margin-bottom: 30px; }
+  .testimonials .quote { padding: 28px 20px; }
+  .testimonials .quote p { font-size: 15px; }
+  .testimonials .quote::before { font-size: 40px; top: -20px; left: 16px; }
+  .cta-final h2 { font-size: 26px; }
+  .cta-final p { font-size: 15px; }
+  .cta-final .btn { width: 100%; max-width: 320px; padding: 14px 20px; font-size: 14px; }
+
+  /* === Showcase visual === */
+  .showcase .visual { aspect-ratio: 4/3; border-radius: 16px; }
+  .showcase .visual-caption { bottom: 18px; left: 18px; right: 18px; }
+  .showcase .visual-caption h4 { font-size: 16px; }
+  .showcase .checklist li { font-size: 14px; }
+
+  /* === AUTH MOBILE === */
+  .auth-split .form-side { padding: 24px 18px; }
+  .auth-split .form-card h1 { font-size: 26px; }
+  .auth-split .form-card .subt { font-size: 14px; margin-bottom: 24px; }
+  .auth-split .form-card .top-link { flex-direction: column; align-items: flex-start; gap: 6px; font-size: 12px; }
+  .auth-split .form-control { padding: 12px 12px 12px 42px; font-size: 14px; }
+  .auth-split .helper-tip { font-size: 11px; padding: 12px; }
+
+  /* === APP HEADER (utilisateur) === */
+  .app-header { padding: 10px 0; }
+  .app-header .container { gap: 10px; }
+  .nav-links { gap: 6px; }
+  .nav-links a:not(.user-menu):not(.user-menu *) { display: none; }
+  .user-menu { gap: 8px; }
+  .user-menu .info { display: none; }
+  .user-menu .avatar { width: 36px; height: 36px; font-size: 14px; }
+
+  /* === DASHBOARD UTILISATEUR === */
+  .welcome-hero { padding: 24px 20px; border-radius: 18px; margin-bottom: 20px; }
+  .welcome-hero .greet h1 { font-size: 24px; }
+  .welcome-hero .greet p { font-size: 14px; }
+  .welcome-hero .greet-row { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .welcome-hero .quick-action { width: 100%; justify-content: center; padding: 13px 20px; font-size: 14px; }
+  .welcome-hero .meta-row { gap: 14px; padding-top: 18px; margin-top: 18px; }
+  .welcome-hero .meta-row .mi { font-size: 12px; }
+  .welcome-hero::after { font-size: 160px; right: -50px; bottom: -50px; }
+
+  .tip-card { padding: 14px 16px; gap: 12px; }
+  .tip-card .ic { width: 40px; height: 40px; font-size: 16px; }
+  .tip-card h4 { font-size: 14px; }
+  .tip-card p { font-size: 12px; }
+
+  .stats-row-pro { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .stat-pro { padding: 18px 16px; }
+  .stat-pro .ic { width: 42px; height: 42px; font-size: 18px; margin-bottom: 12px; }
+  .stat-pro .val { font-size: 24px; }
+  .stat-pro .lbl { font-size: 10px; letter-spacing: .5px; }
+  .stat-pro .delta { font-size: 10px; }
+
+  .action-row-pro { gap: 14px; margin-bottom: 24px; }
+  .action-pro { padding: 22px; min-height: auto; }
+  .action-pro.hero-card h3 { font-size: 20px; }
+  .action-pro.hero-card p { font-size: 13px; }
+  .action-pro.hero-card::after { font-size: 100px; bottom: -10px; }
+  .action-pro.alt h3 { font-size: 16px; }
+  .action-pro.alt p { font-size: 12px; }
+
+  .weather-card { padding: 18px; }
+  .weather-card .temp { font-size: 32px; }
+  .weather-card .ic-w { font-size: 34px; }
+
+  /* === CARDS génériques === */
+  .card { padding: 18px; border-radius: 14px; }
+  .card-header { margin-bottom: 14px; }
+  .card-header h2 { font-size: 16px; }
+  .card-header a { font-size: 12px; }
+  .page-header { padding: 20px 0 10px; }
+  .page-header h1 { font-size: 22px; }
+  .page-header .subtitle { font-size: 13px; }
+
+  /* === DIAG LIST === */
+  .diag-list { gap: 10px; }
+  .diag-item { padding: 12px; gap: 10px; }
+  .diag-thumb { width: 50px; height: 50px; font-size: 20px; }
+  .diag-info h4 { font-size: 13px; }
+  .diag-info p { font-size: 11px; }
+  .tag { font-size: 9px; padding: 2px 6px; }
+
+  /* === UPLOAD ZONE === */
+  .upload-zone { padding: 28px 18px; }
+  .upload-zone i { font-size: 42px; }
+  .upload-zone h3 { font-size: 16px; }
+  .upload-zone p { font-size: 12px; }
+
+  /* === RESULT === */
+  .result-hero img { max-height: 280px; }
+  .result-body { padding: 22px; }
+  .result-body h2 { font-size: 20px; }
+  .confidence-meter .pct { font-size: 30px; }
+  .info-block { padding: 16px; }
+  .info-block h3 { font-size: 14px; }
+  .info-block p, .info-block li { font-size: 13px; }
+
+  /* === STATS GRID legacy === */
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .stat-card { padding: 16px; gap: 12px; }
+  .stat-card .icon-circle { width: 42px; height: 42px; font-size: 16px; }
+  .stat-card .meta .num { font-size: 20px; }
+  .stat-card .meta .lbl { font-size: 10px; }
+
+  /* === ALERT === */
+  .alert { font-size: 13px; padding: 10px 14px; }
+
+  /* === BOUTONS === */
+  .btn { padding: 12px 20px; font-size: 14px; }
+  .btn-block { width: 100%; }
+
+  /* === FORM === */
+  .form-row { grid-template-columns: 1fr; }
+  .form-control { padding: 11px 12px 11px 38px; font-size: 14px; }
+  .form-group label { font-size: 11px; }
+
+  /* === ADMIN MOBILE === */
+  .admin-side .brand { font-size: 18px; }
+  .admin-menu a { padding: 8px 12px; font-size: 11px; }
+  .admin-topbar h1 { font-size: 18px; }
+  .kpi { padding: 16px; }
+  .kpi .val { font-size: 22px; }
+  .kpi .lbl { font-size: 10px; }
+  .admin-cards { grid-template-columns: 1fr; }
+
+  /* === TABLES responsive (scroll horizontal) === */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .table { min-width: 600px; }
+  .table th, .table td { padding: 10px 12px; font-size: 12px; }
+
+  /* === FOOTER === */
+  footer { padding: 20px 16px; font-size: 12px; margin-top: 30px; }
+
+  /* === SECTION TITLE === */
+  .section-title h2 { font-size: 26px; }
+  .section-title p { font-size: 14px; }
+  .features-grid { grid-template-columns: 1fr; gap: 14px; }
+  .feature-card { padding: 22px; }
+
+  /* === HERO legacy === */
+  .hero { padding: 40px 0; }
+  .hero-grid { grid-template-columns: 1fr; gap: 30px; }
+  .hero h1 { font-size: 28px; }
+  .hero p { font-size: 15px; }
+  .hero-cta { flex-direction: column; gap: 10px; }
+  .hero-cta .btn { width: 100%; justify-content: center; }
+  .hero-visual i { font-size: 100px; }
+
+  .stats-banner { padding: 40px 0; }
+  .stats-banner-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .stats-banner-grid .num { font-size: 30px; }
+}
+
+/* =====================================================
+   PETITS MOBILES (≤ 380px)
+   ===================================================== */
+@media (max-width: 380px) {
+  .landing-hero h1 { font-size: 26px; }
+  .landing-hero .trust-row { grid-template-columns: 1fr 1fr; }
+  .stats-row-pro { grid-template-columns: 1fr; }
+  .welcome-hero .greet h1 { font-size: 20px; }
+  .welcome-hero .meta-row { flex-direction: column; gap: 8px; align-items: flex-start; }
+  .kpi-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr; }
+}
+
+/* =====================================================
+   ORIENTATION PAYSAGE sur mobile
+   ===================================================== */
+@media (max-width: 900px) and (orientation: landscape) {
+  .auth-split .form-side { min-height: auto; padding: 30px; }
+  .welcome-hero { padding: 22px; }
+  .landing-hero { min-height: auto; }
+}
+
+/* =====================================================
+   DARK MODE prefs (optionnel — laissé clair pour le moment)
+   ===================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .landing-hero .bubble-1, .landing-hero .bubble-2 { animation: none; }
+  .welcome-hero .greet h1 .wave { animation: none; }
+}
