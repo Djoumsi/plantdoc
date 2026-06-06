@@ -13,23 +13,21 @@
       <p>JPG, PNG ou WebP · 5 Mo max</p>
       <img id="preview" class="preview-img" style="display:none">
 
+      <!-- L'unique input envoyé au serveur -->
+      <input type="file" name="photo" id="photo"
+             accept="image/jpeg,image/png,image/webp"
+             class="photo-input" required>
+
       <div class="photo-actions">
-        <label class="photo-btn photo-btn-camera">
+        <button type="button" class="photo-btn photo-btn-camera" id="btnCamera">
           <i class="fa-solid fa-camera"></i>
           <span>Prendre une photo</span>
-          <input type="file" name="photo" id="photoCamera"
-                 accept="image/jpeg,image/png,image/webp"
-                 capture="environment"
-                 class="photo-input">
-        </label>
+        </button>
 
-        <label class="photo-btn photo-btn-gallery">
+        <button type="button" class="photo-btn photo-btn-gallery" id="btnGallery">
           <i class="fa-solid fa-images"></i>
           <span>Choisir depuis la galerie</span>
-          <input type="file" name="photo" id="photoGallery"
-                 accept="image/jpeg,image/png,image/webp"
-                 class="photo-input">
-        </label>
+        </button>
       </div>
     </div>
 
@@ -69,36 +67,34 @@
 </div>
 
 <script>
-const photoCamera = document.getElementById('photoCamera');
-const photoGallery = document.getElementById('photoGallery');
+const photo = document.getElementById('photo');
+const btnCamera = document.getElementById('btnCamera');
+const btnGallery = document.getElementById('btnGallery');
 const preview = document.getElementById('preview');
 const dropzone = document.getElementById('dropzone');
 const form = document.getElementById('diag-form');
 const offlineNote = document.getElementById('offlineNote');
 
-// Quand l'utilisateur choisit une photo (caméra OU galerie), on synchronise
-// les deux inputs pour qu'un seul fichier soit soumis au serveur.
-function handlePhotoChange(source) {
-  const file = source.files[0];
+// Un seul input, deux boutons : on bascule l'attribut capture avant de cliquer.
+btnCamera.addEventListener('click', () => {
+  photo.setAttribute('capture', 'environment');
+  photo.click();
+});
+btnGallery.addEventListener('click', () => {
+  photo.removeAttribute('capture');
+  photo.click();
+});
+
+photo.addEventListener('change', () => {
+  const file = photo.files[0];
   if (!file) return;
-
-  // Vider l'autre input pour qu'un seul fichier soit envoyé au serveur
-  const other = (source === photoCamera) ? photoGallery : photoCamera;
-  try { other.value = ''; } catch (e) {}
-
   preview.src = URL.createObjectURL(file);
   preview.style.display = 'block';
   dropzone.classList.add('has-image');
   dropzone.querySelectorAll(':scope > i, :scope > h3, :scope > p').forEach(el => el.style.display = 'none');
-}
+});
 
-photoCamera.addEventListener('change', () => handlePhotoChange(photoCamera));
-photoGallery.addEventListener('change', () => handlePhotoChange(photoGallery));
-
-// Helper pour obtenir le fichier actuellement sélectionné
-function currentPhoto() {
-  return (photoCamera.files[0]) || (photoGallery.files[0]) || null;
-}
+function currentPhoto() { return photo.files[0] || null; }
 
 // Indicateur hors-ligne
 function refreshOnline() {
